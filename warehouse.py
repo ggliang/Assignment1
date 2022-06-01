@@ -79,6 +79,7 @@ class Warehouse(Stock):
         Given the name that we want to look for, the function will return the current storage for that cargo in int format
         '''
         self.update_stock_type() # update the stock type make sure that the dictionary keys contain all possible name so no key error would be raised
+        assert name in self.storage.keys(), "The item is not existed" #If the stock hasn't been initiated, we couldn't find it in the warehouse
         print("The number of",name,"in Warehouse",self.id,"is",self.storage[name])
         return self.storage[name]
     
