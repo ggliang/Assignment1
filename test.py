@@ -103,15 +103,22 @@ class TestWarehouse(unittest.TestCase):
         '''
         self.assertEqual(w1.get_num_stock("Apple"),1)
         self.assertEqual(w2.get_num_stock("Cherry"),2)
+    
+    @unittest.expectedFailure
+    def test_f_get_num_stock2(self):
+        '''
+        "apple" is not in the warehouse since the first letter shall be upper case
+        '''
+        self.assertEqual(w1.get_num_stock("apple"),1)
 
-    def test_f_get_all_stock_status(self):
+    def test_g_get_all_stock_status(self):
         '''
         get_all_stock_status would return the entire storage of each warehouse correctly
         '''
         self.assertEqual(w1.get_all_stock_status(),{"Apple":1,"Banana":4,"Cherry":0})
         self.assertEqual(w2.get_all_stock_status(),{"Apple":0,"Banana":0,"Cherry":2})
     
-    def test_g_move_stock_to(self):
+    def test_h_move_stock_to(self):
         '''
         1 apple is move from warehouse 1 to warehouse 2,
         and 1 cherry is move from warehouse 2 to warehouse 1
